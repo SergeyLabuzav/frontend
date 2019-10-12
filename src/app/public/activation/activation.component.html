@@ -1,0 +1,24 @@
+<div class="header">
+  <a href="#" class="header--logo w-inline-block">
+    <img src="https://uploads-ssl.webflow.com/58efb1866b0361480e31bb71/5d335cd477686860164de7af_logo.svg" alt="" class="logo"/>
+  </a>
+  <div class="header--nav">
+    <a href="https://instagram.com/mackenziechild/" target="_blank" class="header--nav-item">Instagram</a>
+    <a href="https://youtube.com/mackenziechild" target="_blank" class="header--nav-item">YouTube</a>
+    <a href="https://twitter.com/mackenziechild" target="_blank" class="header--nav-item">Twitter</a>
+  </div>
+</div>
+
+<ng-container
+  *ngIf="isActivated; then success; else failure">
+</ng-container>
+
+<ng-template #success>
+  <h1>Success</h1>
+</ng-template>
+<ng-template #failure>
+  <h1>Ошибка</h1>
+  <h1>Failure</h1>
+  <h2>Failure</h2>
+  <h2>Ошибка</h2>
+</ng-template>

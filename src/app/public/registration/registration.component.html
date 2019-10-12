@@ -1,0 +1,73 @@
+<div>
+  <div class="header">
+    <a routerLink="/" class="header--logo w-inline-block">
+      <img src="assets/logo.svg" alt="" class="logo"/>
+    </a>
+    <div class="header--nav">
+      <a routerLink="/login" class="header--nav-item">Вход</a>
+      <a routerLink="/about" class="header--nav-item">О нас</a>
+    </div>
+  </div>
+
+  <div class='container pv8'>
+    <div class='row'>
+      <div class='col-sm-12 text-center'>
+        <div class="alert alert-danger" *ngIf="error">
+          <strong>Registration failed!</strong> Please try again later.
+        </div>
+
+        <div class="alert alert-danger" *ngIf="errorUserExists">
+          <strong>Логин уже существует!</strong> Пожалуйста, выбирите другое.
+        </div>
+
+        <div class="alert alert-danger" *ngIf="errorEmailExists">
+          <strong>Почта уже существует!</strong> Пожалуйста, выбирите другую.
+        </div>
+
+        <div class="alert alert-danger" *ngIf="doNotMatch">
+          Пароли не совпадают!
+        </div>
+      </div>
+      <div class='col-sm-12 text-center'>
+        <h1>Регистрация нового пользователя!</h1>
+      </div>
+    </div>
+    <div class='row pt6'>
+      <div class='col-md-4 col-md-offset-4'>
+        <form role="form" (ngSubmit)="login()" #registerForm="ngForm" accept-charset="UTF-8" method="post">
+          <div class="form-group">
+            <label class="control-label" for="email">Почта</label>
+            <input [(ngModel)]="userDetail.email"
+                   placeholder="моя_почта@gmail.com"
+                   autofocus="autofocus"
+                   required
+                   class="form-control"
+                   name="email" id="email" type="email" />
+          </div>
+          <div class="form-group">
+            <label class="control-label" for="email">Логин</label>
+            <input [(ngModel)]="userDetail.login"
+                   placeholder="моё имя"
+                   required
+                   class="form-control"
+                   name="login" id="login" type="login" />
+          </div>
+          <div class="form-group">
+            <label class="control-label" for="password">Пароль</label>
+            <input [(ngModel)]="userDetail.password"
+                   required
+                   class="form-control"
+                   name="password" id="password" type="password" />
+          </div>
+          <div class="form-group">
+            <label class="control-label" for="password">Подтверждение пароля</label>
+            <input [(ngModel)]="confirmPassword"
+                   required
+                   class="form-control"
+                   name="confirmPassword" id="confirmPassword" type="password" />
+          </div>
+          <input type="submit" [disabled]="registerForm.form.invalid" name="commit" value="Зарегистрировать" class="btn btn-primary btn-block" data-disable-with="Next" />
+        </form></div>
+    </div>
+  </div>
+</div>
