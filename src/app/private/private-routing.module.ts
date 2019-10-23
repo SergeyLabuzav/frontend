@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { AuthenticatedUserGuard } from '../../shared/guards/authenticated-user.guard';
+import { AuthenticatedUserGuard } from '../shared/guards/authenticated-user.guard';
+import { NoCreatedPregnancyGuard } from '../shared/guards/no-created-pregnancy.guard';
+import { CreatePregnancyComponent } from './components/create-pregnancy/create-pregnancy.component';
 import { HomeComponent } from './components/home/home.component';
 
 const privateRoutes: Routes = [
@@ -8,6 +10,12 @@ const privateRoutes: Routes = [
     path: '',
     component: HomeComponent,
     canLoad: [AuthenticatedUserGuard],
+    canActivate: [AuthenticatedUserGuard, NoCreatedPregnancyGuard],
+    canActivateChild: [AuthenticatedUserGuard]
+  },
+  {
+    path: 'new-pregnancy',
+    component: CreatePregnancyComponent,
     canActivate: [AuthenticatedUserGuard]
   }
 ];

@@ -1,12 +1,12 @@
 import { Injectable } from '@angular/core';
-import { CanActivate } from '@angular/router';
+import { CanActivate, CanActivateChild, CanLoad } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
 import { RouterService } from '../service/router.service';
 
 @Injectable({
   providedIn: 'root'
 })
-export class AuthenticatedUserGuard implements CanActivate {
+export class AuthenticatedUserGuard implements CanLoad, CanActivate, CanActivateChild {
   constructor(private routerService: RouterService, private cookieService: CookieService) {
   }
 
@@ -15,6 +15,10 @@ export class AuthenticatedUserGuard implements CanActivate {
   }
 
   canActivate(): boolean {
+    return this.validateAuthentication();
+  }
+
+  canActivateChild(): boolean {
     return this.validateAuthentication();
   }
 

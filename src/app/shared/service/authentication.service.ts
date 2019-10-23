@@ -17,6 +17,7 @@ export class AuthenticationService {
     this.authorize(userDetail).then(data => {
       this.saveToken(data);
     }, err => {
+      console.log('error', err);
       alert('Invalid Credentials');
     });
   }
@@ -25,7 +26,7 @@ export class AuthenticationService {
     return this.httpClient.post<any>(environment.apiUrl + 'auth/oauth/token',
       `grant_type=password&username=${userDetail.email}&password=${userDetail.password}&scope=READ WRITE`, {
         headers: new HttpHeaders({
-          Authorization: `Basic ${btoa('mobile:pin')}`,
+          Authorization: `Basic ${btoa('web:pin')}`,
           'Content-Type': 'application/x-www-form-urlencoded'
         })
       }).toPromise();
