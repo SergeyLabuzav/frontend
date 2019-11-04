@@ -1,0 +1,18 @@
+<div class="col-lg-4">
+  <svg
+    class="progress-ring"
+    [attr.width]="getRadius() * 2"
+    [attr.height]="getRadius() * 2">
+    <circle
+      [attr.fill]="'transparent'"
+      [attr.cx]="getRadius()"
+      [attr.cy]="getRadius()"
+      [attr.stroke-width]="stroke"
+      [attr.stroke-dasharray]="getCircumference() + ' ' + getCircumference()"
+      [attr.stroke-dashoffset]="getOffset()"
+      class="progress-ring__circle"
+      stroke="#ad97ef"
+      [attr.r]="getNormalizedRadius()"/>
+  </svg>
+</div>
+

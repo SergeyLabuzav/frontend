@@ -8,9 +8,14 @@ import { environment } from '../../../environments/environment';
 })
 export class PregnancyService {
 
-  constructor(private httpClient: HttpClient) { }
+  constructor(private httpClient: HttpClient) {
+  }
 
   fetchActive(): Observable<any> {
     return this.httpClient.get<void>(environment.apiUrl + 'baby/pregnancy');
+  }
+
+  save(period: number): Observable<any> {
+    return this.httpClient.post<any>(environment.apiUrl + 'baby/pregnancy', period);
   }
 }

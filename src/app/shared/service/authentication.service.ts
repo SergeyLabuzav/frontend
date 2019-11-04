@@ -18,7 +18,6 @@ export class AuthenticationService {
       this.saveToken(data);
     }, err => {
       console.log('error', err);
-      alert('Invalid Credentials');
     });
   }
 
@@ -35,6 +34,7 @@ export class AuthenticationService {
   saveToken(token) {
     const expireDate = new Date().getTime() + (1000 * token.expires_in);
     this.cookieService.set('access_token', token.access_token, expireDate);
+    this.cookieService.set('refresh_token', token.refresh_token, expireDate);
     this.router.navigate(['/']);
   }
 
@@ -45,7 +45,31 @@ export class AuthenticationService {
   }
 
   logout() {
-    this.cookieService.delete('access_token');
+    this.cookieService.deleteAll();
     this.router.navigate(['/login']);
+  }
+
+  refreshToken(refreshToken: string) {
+    this.httpClient.post<any>(environment.apiUrl + 'auth/oauth/token',
+      `refresh_token=${refreshToken}&grant_type=refresh_token&scope=READ WRITE`, {
+        headers: new HttpHeaders({
+          Authorization: `Basic ${btoa('web:pin')}`,
+          'Content-Type': 'application/x-www-form-urlencoded'
+        })
+      }).subscribe(data => {
+      console.log('saveToken');
+      this.saveToken(data);
+    }, err => {
+      console.log('err', err);
+      this.logout();
+    });
+  }
+
+  getAccessToken(): string {
+    return this.cookieService.get('access_token');
+  }
+
+  getRefreshToken(): string {
+    return this.cookieService.get('refresh_token');
   }
 }

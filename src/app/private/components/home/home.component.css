@@ -13,7 +13,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #5995DA;
+  /*background-color: #5995DA;*/
 }
 
 .content {
@@ -22,7 +22,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #F09A9D;
+  /*background-color: #F09A9D;*/
 }
 
 .section{
@@ -55,7 +55,7 @@
 #menu{
   padding: 0;
   margin: 20px auto;
-  width: 500px;
+  /*width: 300px;*/
 }
 
 @media (max-width: 479px) {

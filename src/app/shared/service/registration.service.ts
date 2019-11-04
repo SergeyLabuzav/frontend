@@ -12,9 +12,9 @@ export class RegistrationService {
   constructor(private httpClient: HttpClient) { }
 
   signUp(userRegistration: UserRegistration): Observable<void> {
-    return this.httpClient.post<void>(environment.apiUrl + 'auth/oauth/account/create', userRegistration, {
+    return this.httpClient.post<void>(environment.apiUrl + 'oauth/account/create', userRegistration, {
       headers: new HttpHeaders({
-        Authorization: `Basic ${btoa('mobile:pin')}`
+        Authorization: `Basic ${btoa('web:pin')}`
       })
     });
   }

@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { AuthenticatedUserGuard } from '../shared/guards/authenticated-user.guard';
 import { NoCreatedPregnancyGuard } from '../shared/guards/no-created-pregnancy.guard';
 import { CreatePregnancyComponent } from './components/create-pregnancy/create-pregnancy.component';
+import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { HomeComponent } from './components/home/home.component';
 
 const privateRoutes: Routes = [
@@ -11,7 +12,13 @@ const privateRoutes: Routes = [
     component: HomeComponent,
     canLoad: [AuthenticatedUserGuard],
     canActivate: [AuthenticatedUserGuard, NoCreatedPregnancyGuard],
-    canActivateChild: [AuthenticatedUserGuard]
+    canActivateChild: [AuthenticatedUserGuard],
+    children: [
+      {
+        path: '',
+        component: DashboardComponent
+      }
+    ]
   },
   {
     path: 'new-pregnancy',

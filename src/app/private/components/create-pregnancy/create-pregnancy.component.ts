@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { PregnancyService } from '../../../shared/service/pregnancy.service';
+import { RouterService } from '../../../shared/service/router.service';
 
 @Component({
   selector: 'app-create-pregnancy',
@@ -7,9 +9,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CreatePregnancyComponent implements OnInit {
 
-  constructor() { }
+  period: number;
+
+  constructor(private pregnancyService: PregnancyService, private routerService: RouterService) { }
 
   ngOnInit() {
   }
 
+  create() {
+    this.pregnancyService.save(this.period).subscribe( result => this.routerService.navigateToHomePage());
+  }
 }
