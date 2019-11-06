@@ -2,20 +2,6 @@
   visibility: hidden;
 }
 
-.page {
-  display: flex;
-  flex-wrap: wrap;
-}
-
-.section {
-  width: 30%;
-  height: 300px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  /*background-color: #5995DA;*/
-}
-
 .content {
   width: 70%;
   height: 300px;
@@ -202,9 +188,6 @@
     transform: none;
   }
 
-  .section {
-    width: 0;
-  }
   .content {
     width: 100%;
   }

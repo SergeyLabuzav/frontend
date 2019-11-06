@@ -35,7 +35,8 @@ export class SecurityInterceptor implements HttpInterceptor {
 
   getRequest(request: HttpRequest<any>): HttpRequest<any> {
     const accessToken = this.authenticationService.getAccessToken();
-    if (accessToken) {
+    const authorization = request.headers.get('Authorization');
+    if (accessToken && !authorization) {
       return SecurityInterceptor.addAuthenticationToken(request, accessToken);
     }
     return SecurityInterceptor.updateBasicRequest(request);
@@ -43,12 +44,9 @@ export class SecurityInterceptor implements HttpInterceptor {
 
   private handle401Error(request: HttpRequest<any>, next: HttpHandler) {
     const refreshToken = this.authenticationService.getRefreshToken();
-    console.log('refreshToken', refreshToken);
     if (refreshToken) {
-      console.log('refreshToken');
       this.authenticationService.refreshToken(refreshToken);
     } else {
-      console.log('logout');
       this.authenticationService.logout();
     }
   }

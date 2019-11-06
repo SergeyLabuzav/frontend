@@ -1,0 +1,29 @@
+.general__page {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.sidebar-section {
+  width: 30%;
+  min-height: 300px;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  background-color: #5995DA;
+}
+
+.main-section {
+  width: 70%;
+  min-height: 300px;
+  background-color: #F09A9D;
+}
+
+@media (max-width: 479px) {
+  .sidebar-section {
+    width: 0;
+  }
+
+  .main-section {
+    width: 100%;
+  }
+}

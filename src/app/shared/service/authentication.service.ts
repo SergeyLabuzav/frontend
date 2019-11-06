@@ -60,7 +60,6 @@ export class AuthenticationService {
       console.log('saveToken');
       this.saveToken(data);
     }, err => {
-      console.log('err', err);
       this.logout();
     });
   }

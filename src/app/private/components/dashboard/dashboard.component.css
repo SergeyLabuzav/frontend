@@ -1,0 +1,23 @@
+.feature__page {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.top__feature {
+  width: 50%;
+  height: 300px;
+  display: flex;
+  align-content: center;
+  justify-content: center;
+  background-color: #F5CF8E;
+}
+
+.feature-2 {
+  background-color: #F09A9D;
+  width: 50%;
+}
+
+.feature-3 {
+  width: 50%;
+  background-color: #C8C6FA;
+}
